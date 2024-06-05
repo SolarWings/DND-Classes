@@ -1,5 +1,18 @@
 {
   "$schema": "https://raw.githubusercontent.com/TheGiddyLimit/5etools-utils/master/schema/brew-fast/homebrew.json",
+  "_meta": {
+    "sources": [
+      {
+        "json": "hec",
+        "abbreviation": "HEC",
+        "color": "560585",
+        "full": "Hunter's Epalux Catalogues",
+        "authors": [
+          "The Watchtower"
+        ],
+        "version": "1.0.0"
+      }
+    ],
 	"class": [
 		{
 			"name": "Cultivator",
@@ -2778,4 +2791,5 @@
 			]
 		}
 	]
+}
 }
