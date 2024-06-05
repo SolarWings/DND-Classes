@@ -2,7 +2,9 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"version": "2.11.8",
 	"$id": "class.json",
+
 	"type": "object",
+
 	"$defs": {
 		"_classTableGroupSubclass": {
 			"type": "array",
@@ -12,17 +14,13 @@
 					"name": {
 						"type": "string"
 					},
-					"source": {
-						"$ref": "../util.json#/$defs/source"
-					}
+					"source": {"$ref": "../util.json#/$defs/source"}
 				},
-				"required": [
-					"name",
-					"source"
-				],
+				"required": ["name", "source"],
 				"additionalProperties": false
 			}
 		},
+
 		"classTableGroup": {
 			"oneOf": [
 				{
@@ -76,9 +74,7 @@
 							"type": "array",
 							"items": {
 								"type": "array",
-								"items": {
-									"type": "integer"
-								},
+								"items": {"type": "integer"},
 								"minItems": 1,
 								"maxItems": 9
 							}
@@ -92,25 +88,15 @@
 				}
 			]
 		},
+
 		"casterProgression": {
-			"enum": [
-				"full",
-				"1/2",
-				"1/3",
-				"pact",
-				"artificer"
-			]
+			"enum": ["full", "1/2", "1/3", "pact", "artificer"]
 		},
+
 		"spellcastingAbility": {
-			"enum": [
-				"str",
-				"dex",
-				"con",
-				"int",
-				"wis",
-				"cha"
-			]
+			"enum": ["str", "dex", "con", "int", "wis", "cha"]
 		},
+
 		"cantripProgression": {
 			"type": "array",
 			"items": {
@@ -119,10 +105,12 @@
 			"minItems": 20,
 			"maxItems": 20
 		},
+
 		"preparedSpells": {
 			"type": "string",
 			"description": "Formula for the number of spells the class can prepare, for example:\n\"<$level$> / 2 + <$int_mod$>\""
 		},
+
 		"preparedSpellsProgression": {
 			"type": "array",
 			"items": {
@@ -131,6 +119,7 @@
 			"minItems": 20,
 			"maxItems": 20
 		},
+
 		"spellsKnownProgression": {
 			"type": "array",
 			"items": {
@@ -139,6 +128,7 @@
 			"minItems": 20,
 			"maxItems": 20
 		},
+
 		"spellsKnownProgressionFixed": {
 			"description": "For e.g. Wizard, where the spells taken at each level must be <= the max spellcasting level, and cannot be swapped out afterward.",
 			"type": "array",
@@ -148,9 +138,9 @@
 			"minItems": 20,
 			"maxItems": 20
 		},
-		"spellsKnownProgressionFixedAllowLowerLevel": {
-			"type": "boolean"
-		},
+
+		"spellsKnownProgressionFixedAllowLowerLevel": {"type": "boolean"},
+
 		"spellsKnownProgressionFixedByLevel": {
 			"description": "For e.g. Warlock Mystic Arcanum. A map of <class level> -> <spell level> -> <number of spells known>",
 			"type": "object",
@@ -158,135 +148,92 @@
 				"^\\d+$": {
 					"type": "object",
 					"properties": {
-						"1": {
-							"type": "integer"
-						},
-						"2": {
-							"type": "integer"
-						},
-						"3": {
-							"type": "integer"
-						},
-						"4": {
-							"type": "integer"
-						},
-						"5": {
-							"type": "integer"
-						},
-						"6": {
-							"type": "integer"
-						},
-						"7": {
-							"type": "integer"
-						},
-						"8": {
-							"type": "integer"
-						},
-						"9": {
-							"type": "integer"
-						}
+						"1": {"type": "integer"},
+						"2": {"type": "integer"},
+						"3": {"type": "integer"},
+						"4": {"type": "integer"},
+						"5": {"type": "integer"},
+						"6": {"type": "integer"},
+						"7": {"type": "integer"},
+						"8": {"type": "integer"},
+						"9": {"type": "integer"}
 					},
 					"additionalProperties": false
 				}
 			},
 			"additionalProperties": false
 		},
+
 		"classFeature": {
 			"type": "object",
 			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"source": {
-					"$ref": "../util.json#/$defs/source"
-				},
-				"srd": {
-					"$ref": "../util.json#/$defs/srd"
-				},
-				"basicRules": {
-					"$ref": "../util.json#/$defs/basicRules"
-				},
-				"className": {
-					"type": "string"
-				},
-				"classSource": {
-					"$ref": "../util.json#/$defs/source"
-				},
-				"level": {
-					"type": "integer"
-				},
-				"header": {
-					"type": "integer"
-				},
-				"page": {
-					"$ref": "../util.json#/$defs/page"
-				},
-				"type": {
-					"type": "string",
-					"enum": [
-						"inset",
-						"item"
-					]
-				},
+				"name": {"type": "string"},
+				"source": {"$ref": "../util.json#/$defs/source"},
+				"srd": {"$ref": "../util.json#/$defs/srd"},
+				"basicRules": {"$ref": "../util.json#/$defs/basicRules"},
+				"className":  {"type": "string"},
+				"classSource": {"$ref": "../util.json#/$defs/source"},
+				"level":  {"type": "integer"},
+				"header":  {"type": "integer"},
+				"page": {"$ref": "../util.json#/$defs/page"},
+				"type": {"type": "string", "enum": ["inset", "item"]},
 				"entries": {
 					"type": "array",
 					"items": {
 						"$ref": "../entry.json"
 					}
 				},
-				"isClassFeatureVariant": {
-					"type": "boolean"
-				},
+				"isClassFeatureVariant": {"type": "boolean"},
 				"otherSources": {
 					"$ref": "../util.json#/$defs/otherSources"
 				},
-				"consumes": {
-					"$ref": "../util.json#/$defs/consumesObject"
-				},
-				"foundrySystem": {
-					"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-				},
-				"foundryFlags": {
-					"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-				},
-				"foundryImg": {
-					"$ref": "../util-foundry.json#/$defs/foundryImg"
-				},
-				"languageProficiencies": {
-					"$ref": "../util.json#/$defs/languageProficiencies"
-				},
-				"skillProficiencies": {
-					"$ref": "../util.json#/$defs/skillProficiencies"
-				},
-				"weaponProficiencies": {
-					"$ref": "../util.json#/$defs/weaponProficiencies"
-				},
-				"armorProficiencies": {
-					"$ref": "../util.json#/$defs/armorProficiencies"
-				},
-				"toolProficiencies": {
-					"$ref": "../util.json#/$defs/toolProficiencies"
-				},
-				"savingThrowProficiencies": {
-					"$ref": "../util.json#/$defs/savingThrowProficiencies"
-				},
-				"expertise": {
-					"$ref": "../util.json#/$defs/expertise"
-				},
-				"resist": {
-					"$ref": "../util.json#/$defs/damageResistArrayPlayer"
-				},
-				"immune": {
-					"$ref": "../util.json#/$defs/damageImmunityArrayPlayer"
-				},
-				"vulnerable": {
-					"$ref": "../util.json#/$defs/damageVulnerabilityArrayPlayer"
-				},
-				"conditionImmune": {
-					"$ref": "../util.json#/$defs/conditionImmunityArrayPlayer"
-				},
-				"resources": {
-					"$ref": "../util.json#/$defs/resourcesArray"
+				"consumes": {"$ref": "../util.json#/$defs/consumesObject"},
+				"$$ifBrew": {
+					"foundrySystem": {
+						"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
+					},
+					"foundryFlags": {
+						"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
+					},
+					"foundryImg": {
+						"$ref": "../util-foundry.json#/$defs/foundryImg"
+					},
+					"languageProficiencies": {
+						"$ref": "../util.json#/$defs/languageProficiencies"
+					},
+					"skillProficiencies": {
+						"$ref": "../util.json#/$defs/skillProficiencies"
+					},
+					"weaponProficiencies": {
+						"$ref": "../util.json#/$defs/weaponProficiencies"
+					},
+					"armorProficiencies": {
+						"$ref": "../util.json#/$defs/armorProficiencies"
+					},
+					"toolProficiencies": {
+						"$ref": "../util.json#/$defs/toolProficiencies"
+					},
+					"savingThrowProficiencies": {
+						"$ref": "../util.json#/$defs/savingThrowProficiencies"
+					},
+					"expertise": {
+						"$ref": "../util.json#/$defs/expertise"
+					},
+					"resist": {
+						"$ref": "../util.json#/$defs/damageResistArrayPlayer"
+					},
+					"immune": {
+						"$ref": "../util.json#/$defs/damageImmunityArrayPlayer"
+					},
+					"vulnerable": {
+						"$ref": "../util.json#/$defs/damageVulnerabilityArrayPlayer"
+					},
+					"conditionImmune": {
+						"$ref": "../util.json#/$defs/conditionImmunityArrayPlayer"
+					},
+					"resources": {
+						"$ref": "../util.json#/$defs/resourcesArray"
+					}
 				}
 			},
 			"required": [
@@ -299,58 +246,29 @@
 			],
 			"additionalProperties": false
 		},
+
 		"subclassFeature": {
 			"type": "object",
 			"properties": {
-				"name": {
-					"type": "string"
-				},
-				"source": {
-					"$ref": "../util.json#/$defs/source"
-				},
-				"srd": {
-					"$ref": "../util.json#/$defs/srd"
-				},
-				"basicRules": {
-					"$ref": "../util.json#/$defs/basicRules"
-				},
-				"className": {
-					"type": "string"
-				},
-				"classSource": {
-					"$ref": "../util.json#/$defs/source"
-				},
-				"subclassShortName": {
-					"type": "string"
-				},
-				"subclassSource": {
-					"$ref": "../util.json#/$defs/source"
-				},
-				"level": {
-					"type": "integer"
-				},
-				"header": {
-					"type": "integer"
-				},
-				"page": {
-					"$ref": "../util.json#/$defs/page"
-				},
-				"type": {
-					"type": "string",
-					"enum": [
-						"inset",
-						"item"
-					]
-				},
+				"name": {"type": "string"},
+				"source": {"$ref": "../util.json#/$defs/source"},
+				"srd": {"$ref": "../util.json#/$defs/srd"},
+				"basicRules": {"$ref": "../util.json#/$defs/basicRules"},
+				"className":  {"type": "string"},
+				"classSource": {"$ref": "../util.json#/$defs/source"},
+				"subclassShortName":  {"type": "string"},
+				"subclassSource": {"$ref": "../util.json#/$defs/source"},
+				"level":  {"type": "integer"},
+				"header":  {"type": "integer"},
+				"page": {"$ref": "../util.json#/$defs/page"},
+				"type": {"type": "string", "enum": ["inset", "item"]},
 				"entries": {
 					"type": "array",
 					"items": {
 						"$ref": "../entry.json"
 					}
 				},
-				"isClassFeatureVariant": {
-					"type": "boolean"
-				},
+				"isClassFeatureVariant": {"type": "boolean"},
 				"isGainAtNextFeatureLevel": {
 					"description": "If this feature should only be (optionally) gained at the next \"gainSubclassFeature\" level, rather than at the level listed on the feature.",
 					"type": "boolean"
@@ -358,53 +276,53 @@
 				"otherSources": {
 					"$ref": "../util.json#/$defs/otherSources"
 				},
-				"consumes": {
-					"$ref": "../util.json#/$defs/consumesObject"
-				},
-				"foundrySystem": {
-					"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-				},
-				"foundryFlags": {
-					"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-				},
-				"foundryImg": {
-					"$ref": "../util-foundry.json#/$defs/foundryImg"
-				},
-				"languageProficiencies": {
-					"$ref": "../util.json#/$defs/languageProficiencies"
-				},
-				"skillProficiencies": {
-					"$ref": "../util.json#/$defs/skillProficiencies"
-				},
-				"weaponProficiencies": {
-					"$ref": "../util.json#/$defs/weaponProficiencies"
-				},
-				"armorProficiencies": {
-					"$ref": "../util.json#/$defs/armorProficiencies"
-				},
-				"toolProficiencies": {
-					"$ref": "../util.json#/$defs/toolProficiencies"
-				},
-				"savingThrowProficiencies": {
-					"$ref": "../util.json#/$defs/savingThrowProficiencies"
-				},
-				"expertise": {
-					"$ref": "../util.json#/$defs/expertise"
-				},
-				"resist": {
-					"$ref": "../util.json#/$defs/damageResistArrayPlayer"
-				},
-				"immune": {
-					"$ref": "../util.json#/$defs/damageImmunityArrayPlayer"
-				},
-				"vulnerable": {
-					"$ref": "../util.json#/$defs/damageVulnerabilityArrayPlayer"
-				},
-				"conditionImmune": {
-					"$ref": "../util.json#/$defs/conditionImmunityArrayPlayer"
-				},
-				"resources": {
-					"$ref": "../util.json#/$defs/resourcesArray"
+				"consumes": {"$ref": "../util.json#/$defs/consumesObject"},
+				"$$ifBrew": {
+					"foundrySystem": {
+						"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
+					},
+					"foundryFlags": {
+						"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
+					},
+					"foundryImg": {
+						"$ref": "../util-foundry.json#/$defs/foundryImg"
+					},
+					"languageProficiencies": {
+						"$ref": "../util.json#/$defs/languageProficiencies"
+					},
+					"skillProficiencies": {
+						"$ref": "../util.json#/$defs/skillProficiencies"
+					},
+					"weaponProficiencies": {
+						"$ref": "../util.json#/$defs/weaponProficiencies"
+					},
+					"armorProficiencies": {
+						"$ref": "../util.json#/$defs/armorProficiencies"
+					},
+					"toolProficiencies": {
+						"$ref": "../util.json#/$defs/toolProficiencies"
+					},
+					"savingThrowProficiencies": {
+						"$ref": "../util.json#/$defs/savingThrowProficiencies"
+					},
+					"expertise": {
+						"$ref": "../util.json#/$defs/expertise"
+					},
+					"resist": {
+						"$ref": "../util.json#/$defs/damageResistArrayPlayer"
+					},
+					"immune": {
+						"$ref": "../util.json#/$defs/damageImmunityArrayPlayer"
+					},
+					"vulnerable": {
+						"$ref": "../util.json#/$defs/damageVulnerabilityArrayPlayer"
+					},
+					"conditionImmune": {
+						"$ref": "../util.json#/$defs/conditionImmunityArrayPlayer"
+					},
+					"resources": {
+						"$ref": "../util.json#/$defs/resourcesArray"
+					}
 				}
 			},
 			"required": [
@@ -419,6 +337,7 @@
 			],
 			"additionalProperties": false
 		},
+
 		"proficiencies": {
 			"type": "object",
 			"properties": {
@@ -429,10 +348,7 @@
 							{
 								"type": "string",
 								"enum": [
-									"light",
-									"medium",
-									"heavy",
-									"{@item shield|phb|shields}"
+									"light", "medium", "heavy", "{@item shield|phb|shields}"
 								]
 							},
 							{
@@ -441,11 +357,7 @@
 									"proficiency": {
 										"type": "string",
 										"enum": [
-											"light",
-											"medium",
-											"heavy",
-											"{@item shield|phb|shields}",
-											"special"
+											"light", "medium", "heavy", "{@item shield|phb|shields}", "special"
 										]
 									},
 									"full": {
@@ -453,10 +365,7 @@
 										"type": "string"
 									}
 								},
-								"required": [
-									"proficiency",
-									"full"
-								]
+								"required": ["proficiency", "full"]
 							}
 						]
 					}
@@ -471,18 +380,11 @@
 							{
 								"type": "object",
 								"properties": {
-									"proficiency": {
-										"type": "string"
-									},
-									"optional": {
-										"type": "boolean"
-									}
+									"proficiency": {"type": "string"},
+									"optional": {"type": "boolean"}
 								},
 								"additionalProperties": false,
-								"required": [
-									"proficiency",
-									"optional"
-								]
+								"required": ["proficiency", "optional"]
 							}
 						]
 					}
@@ -502,338 +404,41 @@
 				}
 			}
 		},
+
 		"subclass": {
 			"anyOf": [
 				{
 					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
+					"$$merge": [
+						{
+							"$ref": "#/$defs/subclassData"
 						},
-						"shortName": {
-							"type": "string"
-						},
-						"alias": {
-							"$ref": "../util.json#/$defs/alias"
-						},
-						"source": {
-							"$ref": "../util.json#/$defs/source"
-						},
-						"className": {
-							"description": "The name of the class this subclass belongs to.",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "The source of the class this subclass belongs to (defaults to PHB).",
-							"$ref": "../util.json#/$defs/source"
-						},
-						"isReprinted": {
-							"type": "boolean"
-						},
-						"srd": {
-							"$ref": "../util.json#/$defs/srd"
-						},
-						"basicRules": {
-							"$ref": "../util.json#/$defs/basicRules"
-						},
-						"page": {
-							"$ref": "../util.json#/$defs/page"
-						},
-						"casterProgression": {
-							"$ref": "#/$defs/casterProgression"
-						},
-						"spellcastingAbility": {
-							"$ref": "#/$defs/spellcastingAbility"
-						},
-						"cantripProgression": {
-							"$ref": "#/$defs/cantripProgression"
-						},
-						"preparedSpells": {
-							"$ref": "#/$defs/preparedSpells"
-						},
-						"preparedSpellsProgression": {
-							"$ref": "#/$defs/preparedSpellsProgression"
-						},
-						"spellsKnownProgression": {
-							"$ref": "#/$defs/spellsKnownProgression"
-						},
-						"spellsKnownProgressionFixed": {
-							"$ref": "#/$defs/spellsKnownProgressionFixed"
-						},
-						"spellsKnownProgressionFixedAllowLowerLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"
-						},
-						"spellsKnownProgressionFixedByLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"
-						},
-						"optionalfeatureProgression": {
-							"$ref": "../util.json#/$defs/optionalfeatureProgression"
-						},
-						"subclassFeatures": {
-							"type": "array",
-							"description": "Format: \" name | className | classSource | subclassShortName | subclassSource | level | source\"\nPHB is assumed for sources.\nfeatureSource is assumed to be the same as subclassSource.",
-							"items": {
-								"oneOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "object",
-										"properties": {
-											"subclassFeature": {
-												"type": "string"
-											},
-											"gainSubclassFeature": {
-												"type": "boolean"
-											},
-											"gainSubclassFeatureHasContent": {
-												"description": "Features with \"gainSubclassFeature\" are generally ignored by e.g. VTT integrations, as having no meaningful content to import to sheets. Setting this flag informs the integration that this feature should not be ignored.",
-												"type": "boolean"
-											},
-											"tableDisplayName": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"subclassFeature"
-										]
-									}
-								]
-							}
-						},
-						"subclassTableGroups": {
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/classTableGroup"
-							}
-						},
-						"otherSources": {
-							"$ref": "../util.json#/$defs/otherSources"
-						},
-						"additionalSpells": {
-							"$ref": "../util.json#/$defs/additionalSpellsArray"
-						},
-						"hasFluff": {
-							"const": true
-						},
-						"hasFluffImages": {
-							"const": true
-						},
-						"subclassSpells": {
-							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
-							"type": "array",
-							"minItems": 1,
-							"uniqueItems": true,
-							"items": {
-								"$ref": "../util.json#/$defs/spellListSpellRef"
-							}
-						},
-						"subSubclassSpells": {
-							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "array",
-									"description": "For example, a druid circle, religious order, or other sub-subclass name",
-									"minItems": 1,
-									"uniqueItems": true,
-									"items": {
-										"$ref": "../util.json#/$defs/spellListSpellRef"
-									}
-								}
-							}
-						},
-						"fluff": {
-							"$ref": "../util.json#/$defs/fluffObject"
-						},
-						"foundrySystem": {
-							"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-						},
-						"foundryFlags": {
-							"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-						},
-						"foundryAdvancement": {
-							"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
-						},
-						"foundryImg": {
-							"$ref": "../util-foundry.json#/$defs/foundryImg"
+						{
+							"required": [
+								"name",
+								"shortName",
+								"source",
+								"className",
+								"classSource",
+								"subclassFeatures"
+							]
 						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"name",
-						"shortName",
-						"source",
-						"className",
-						"classSource",
-						"subclassFeatures"
 					]
 				},
 				{
 					"type": "object",
-					"properties": {
-						"name": {
-							"type": "string"
+					"$$merge": [
+						{
+							"$ref": "#/$defs/subclassData"
 						},
-						"shortName": {
-							"type": "string"
-						},
-						"alias": {
-							"$ref": "../util.json#/$defs/alias"
-						},
-						"source": {
-							"$ref": "../util.json#/$defs/source"
-						},
-						"className": {
-							"description": "The name of the class this subclass belongs to.",
-							"type": "string"
-						},
-						"classSource": {
-							"description": "The source of the class this subclass belongs to (defaults to PHB).",
-							"$ref": "../util.json#/$defs/source"
-						},
-						"isReprinted": {
-							"type": "boolean"
-						},
-						"srd": {
-							"$ref": "../util.json#/$defs/srd"
-						},
-						"basicRules": {
-							"$ref": "../util.json#/$defs/basicRules"
-						},
-						"page": {
-							"$ref": "../util.json#/$defs/page"
-						},
-						"casterProgression": {
-							"$ref": "#/$defs/casterProgression"
-						},
-						"spellcastingAbility": {
-							"$ref": "#/$defs/spellcastingAbility"
-						},
-						"cantripProgression": {
-							"$ref": "#/$defs/cantripProgression"
-						},
-						"preparedSpells": {
-							"$ref": "#/$defs/preparedSpells"
-						},
-						"preparedSpellsProgression": {
-							"$ref": "#/$defs/preparedSpellsProgression"
-						},
-						"spellsKnownProgression": {
-							"$ref": "#/$defs/spellsKnownProgression"
-						},
-						"spellsKnownProgressionFixed": {
-							"$ref": "#/$defs/spellsKnownProgressionFixed"
-						},
-						"spellsKnownProgressionFixedAllowLowerLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"
-						},
-						"spellsKnownProgressionFixedByLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"
-						},
-						"optionalfeatureProgression": {
-							"$ref": "../util.json#/$defs/optionalfeatureProgression"
-						},
-						"subclassFeatures": {
-							"type": "array",
-							"description": "Format: \" name | className | classSource | subclassShortName | subclassSource | level | source\"\nPHB is assumed for sources.\nfeatureSource is assumed to be the same as subclassSource.",
-							"items": {
-								"oneOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "object",
-										"properties": {
-											"subclassFeature": {
-												"type": "string"
-											},
-											"gainSubclassFeature": {
-												"type": "boolean"
-											},
-											"gainSubclassFeatureHasContent": {
-												"description": "Features with \"gainSubclassFeature\" are generally ignored by e.g. VTT integrations, as having no meaningful content to import to sheets. Setting this flag informs the integration that this feature should not be ignored.",
-												"type": "boolean"
-											},
-											"tableDisplayName": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"subclassFeature"
-										]
-									}
-								]
-							}
-						},
-						"subclassTableGroups": {
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/classTableGroup"
-							}
-						},
-						"otherSources": {
-							"$ref": "../util.json#/$defs/otherSources"
-						},
-						"additionalSpells": {
-							"$ref": "../util.json#/$defs/additionalSpellsArray"
-						},
-						"hasFluff": {
-							"const": true
-						},
-						"hasFluffImages": {
-							"const": true
-						},
-						"subclassSpells": {
-							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
-							"type": "array",
-							"minItems": 1,
-							"uniqueItems": true,
-							"items": {
-								"$ref": "../util.json#/$defs/spellListSpellRef"
-							}
-						},
-						"subSubclassSpells": {
-							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
-							"type": "object",
-							"patternProperties": {
-								".*": {
-									"type": "array",
-									"description": "For example, a druid circle, religious order, or other sub-subclass name",
-									"minItems": 1,
-									"uniqueItems": true,
-									"items": {
-										"$ref": "../util.json#/$defs/spellListSpellRef"
-									}
-								}
-							}
-						},
-						"fluff": {
-							"$ref": "../util.json#/$defs/fluffObject"
-						},
-						"foundrySystem": {
-							"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-						},
-						"foundryFlags": {
-							"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-						},
-						"foundryAdvancement": {
-							"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
-						},
-						"foundryImg": {
-							"$ref": "../util-foundry.json#/$defs/foundryImg"
-						},
-						"_copy": {
-							"$ref": "../util.json#/$defs/copyBlock_copy_generic"
+						{
+							"$ref": "../util.json#/$defs/copyBlockGeneric"
 						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"_copy"
 					]
 				}
 			]
 		},
+
 		"subclassData": {
 			"type": "object",
 			"properties": {
@@ -843,12 +448,8 @@
 				"shortName": {
 					"type": "string"
 				},
-				"alias": {
-					"$ref": "../util.json#/$defs/alias"
-				},
-				"source": {
-					"$ref": "../util.json#/$defs/source"
-				},
+				"alias": {"$ref": "../util.json#/$defs/alias"},
+				"source": {"$ref": "../util.json#/$defs/source"},
 				"className": {
 					"description": "The name of the class this subclass belongs to.",
 					"type": "string"
@@ -866,39 +467,17 @@
 				"basicRules": {
 					"$ref": "../util.json#/$defs/basicRules"
 				},
-				"page": {
-					"$ref": "../util.json#/$defs/page"
-				},
-				"casterProgression": {
-					"$ref": "#/$defs/casterProgression"
-				},
-				"spellcastingAbility": {
-					"$ref": "#/$defs/spellcastingAbility"
-				},
-				"cantripProgression": {
-					"$ref": "#/$defs/cantripProgression"
-				},
-				"preparedSpells": {
-					"$ref": "#/$defs/preparedSpells"
-				},
-				"preparedSpellsProgression": {
-					"$ref": "#/$defs/preparedSpellsProgression"
-				},
-				"spellsKnownProgression": {
-					"$ref": "#/$defs/spellsKnownProgression"
-				},
-				"spellsKnownProgressionFixed": {
-					"$ref": "#/$defs/spellsKnownProgressionFixed"
-				},
-				"spellsKnownProgressionFixedAllowLowerLevel": {
-					"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"
-				},
-				"spellsKnownProgressionFixedByLevel": {
-					"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"
-				},
-				"optionalfeatureProgression": {
-					"$ref": "../util.json#/$defs/optionalfeatureProgression"
-				},
+				"page": {"$ref": "../util.json#/$defs/page"},
+				"casterProgression": {"$ref": "#/$defs/casterProgression"},
+				"spellcastingAbility": {"$ref": "#/$defs/spellcastingAbility"},
+				"cantripProgression": {"$ref": "#/$defs/cantripProgression"},
+				"preparedSpells": {"$ref": "#/$defs/preparedSpells"},
+				"preparedSpellsProgression": {"$ref": "#/$defs/preparedSpellsProgression"},
+				"spellsKnownProgression": {"$ref": "#/$defs/spellsKnownProgression"},
+				"spellsKnownProgressionFixed": {"$ref": "#/$defs/spellsKnownProgressionFixed"},
+				"spellsKnownProgressionFixedAllowLowerLevel": {"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"},
+				"spellsKnownProgressionFixedByLevel": {"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"},
+				"optionalfeatureProgression": {"$ref": "../util.json#/$defs/optionalfeatureProgression"},
 				"subclassFeatures": {
 					"type": "array",
 					"description": "Format: \" name | className | classSource | subclassShortName | subclassSource | level | source\"\nPHB is assumed for sources.\nfeatureSource is assumed to be the same as subclassSource.",
@@ -924,73 +503,67 @@
 										"type": "string"
 									}
 								},
-								"required": [
-									"subclassFeature"
-								]
+								"required": ["subclassFeature"]
 							}
 						]
 					}
 				},
 				"subclassTableGroups": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/classTableGroup"
-					}
+					"items": { "$ref": "#/$defs/classTableGroup"}
 				},
 				"otherSources": {
 					"$ref": "../util.json#/$defs/otherSources"
 				},
-				"additionalSpells": {
-					"$ref": "../util.json#/$defs/additionalSpellsArray"
-				},
-				"hasFluff": {
-					"const": true
-				},
-				"hasFluffImages": {
-					"const": true
-				},
-				"subclassSpells": {
-					"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
-					"type": "array",
-					"minItems": 1,
-					"uniqueItems": true,
-					"items": {
-						"$ref": "../util.json#/$defs/spellListSpellRef"
-					}
-				},
-				"subSubclassSpells": {
-					"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
-					"type": "object",
-					"patternProperties": {
-						".*": {
+				"additionalSpells": { "$ref": "../util.json#/$defs/additionalSpellsArray" },
+				"hasFluff": {"const": true},
+				"hasFluffImages": {"const": true},
+				"$$if": {
+					"modes": ["brew", "ua"],
+					"value": {
+						"subclassSpells": {
+							"description": "Homebrew use only; adds custom subclasses to lists in spells.\nDoes not enable VTT import - see \"additionalSpells\".",
 							"type": "array",
-							"description": "For example, a druid circle, religious order, or other sub-subclass name",
 							"minItems": 1,
 							"uniqueItems": true,
-							"items": {
-								"$ref": "../util.json#/$defs/spellListSpellRef"
+							"items": {"$ref": "../util.json#/$defs/spellListSpellRef"}
+						},
+						"subSubclassSpells": {
+							"description": "Homebrew use only; adds custom sub-subclasses to lists in spells.\nPrimarily used by cleric orders and druid circles.\nDoes not enable VTT import - use \"additionalSpells\" as well.",
+							"type": "object",
+							"patternProperties": {
+								".*": {
+									"type": "array",
+									"description": "For example, a druid circle, religious order, or other sub-subclass name",
+									"minItems": 1,
+									"uniqueItems": true,
+									"items": {"$ref": "../util.json#/$defs/spellListSpellRef"}
+								}
 							}
 						}
 					}
 				},
-				"fluff": {
-					"$ref": "../util.json#/$defs/fluffObject"
-				},
-				"foundrySystem": {
-					"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-				},
-				"foundryFlags": {
-					"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-				},
-				"foundryAdvancement": {
-					"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
-				},
-				"foundryImg": {
-					"$ref": "../util-foundry.json#/$defs/foundryImg"
+				"$$ifBrew": {
+					"fluff": {
+						"$ref": "../util.json#/$defs/fluffObject"
+					},
+					"foundrySystem": {
+						"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
+					},
+					"foundryFlags": {
+						"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
+					},
+					"foundryAdvancement": {
+						"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
+					},
+					"foundryImg": {
+						"$ref": "../util-foundry.json#/$defs/foundryImg"
+					}
 				}
 			},
 			"additionalProperties": false
 		},
+
 		"requirements": {
 			"type": "object",
 			"properties": {
@@ -1048,566 +621,48 @@
 			},
 			"additionalProperties": false
 		},
+
 		"class": {
 			"anyOf": [
 				{
 					"type": "object",
-					"description": "A character class",
-					"properties": {
-						"name": {
-							"type": "string"
+					"$$merge": [
+						{
+							"$ref": "#/$defs/classData"
 						},
-						"alias": {
-							"$ref": "../util.json#/$defs/alias"
-						},
-						"source": {
-							"$ref": "../util.json#/$defs/source"
-						},
-						"otherSources": {
-							"$ref": "../util.json#/$defs/otherSources"
-						},
-						"srd": {
-							"$ref": "../util.json#/$defs/srd"
-						},
-						"basicRules": {
-							"$ref": "../util.json#/$defs/basicRules"
-						},
-						"isReprinted": {
-							"type": "boolean"
-						},
-						"classGroup": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"examples": [
-									"expert",
-									"mage",
-									"priest",
-									"warrior"
-								]
-							}
-						},
-						"isSidekick": {
-							"type": "boolean"
-						},
-						"hd": {
-							"type": "object",
-							"properties": {
-								"number": {
-									"type": "integer"
-								},
-								"faces": {
-									"type": "integer"
-								}
-							},
+						{
 							"required": [
-								"number",
-								"faces"
-							],
-							"additionalProperties": false
-						},
-						"proficiency": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								]
-							}
-						},
-						"classTableGroups": {
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/classTableGroup"
-							}
-						},
-						"startingProficiencies": {
-							"$ref": "#/$defs/proficiencies"
-						},
-						"startingEquipment": {
-							"type": "object",
-							"properties": {
-								"additionalFromBackground": {
-									"type": "boolean"
-								},
-								"default": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"defaultData": {
-									"$ref": "../util.json#/$defs/startingEquipment"
-								},
-								"goldAlternative": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"additionalFromBackground",
-								"default"
-							],
-							"additionalProperties": false
-						},
-						"requirements": {
-							"$ref": "#/$defs/requirements"
-						},
-						"multiclassing": {
-							"type": "object",
-							"properties": {
-								"requirements": {
-									"$ref": "#/$defs/requirements"
-								},
-								"proficienciesGained": {
-									"$ref": "#/$defs/proficiencies"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "../entry.json"
-									}
-								},
-								"requirementsSpecial": {
-									"description": "For homebrew use.",
-									"type": "string"
-								}
-							},
-							"additionalProperties": false
-						},
-						"casterProgression": {
-							"$ref": "#/$defs/casterProgression"
-						},
-						"spellcastingAbility": {
-							"$ref": "#/$defs/spellcastingAbility"
-						},
-						"cantripProgression": {
-							"$ref": "#/$defs/cantripProgression"
-						},
-						"preparedSpells": {
-							"$ref": "#/$defs/preparedSpells"
-						},
-						"preparedSpellsProgression": {
-							"$ref": "#/$defs/preparedSpellsProgression"
-						},
-						"spellsKnownProgression": {
-							"$ref": "#/$defs/spellsKnownProgression"
-						},
-						"spellsKnownProgressionFixed": {
-							"$ref": "#/$defs/spellsKnownProgressionFixed"
-						},
-						"spellsKnownProgressionFixedAllowLowerLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"
-						},
-						"spellsKnownProgressionFixedByLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"
-						},
-						"optionalfeatureProgression": {
-							"$ref": "../util.json#/$defs/optionalfeatureProgression"
-						},
-						"classFeatures": {
-							"type": "array",
-							"description": "Format: \" name | className | classSource | level | source \" , PHB is assumed as classSource and featureSource is assumed to be the same as classSource.",
-							"items": {
-								"oneOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "object",
-										"properties": {
-											"classFeature": {
-												"type": "string"
-											},
-											"gainSubclassFeature": {
-												"type": "boolean"
-											}
-										},
-										"required": [
-											"classFeature"
-										]
-									}
-								]
-							}
-						},
-						"subclassTitle": {
-							"type": "string"
-						},
-						"page": {
-							"$ref": "../util.json#/$defs/page"
-						},
-						"fluff": {
-							"oneOf": [
-								{
-									"$ref": "../util.json#/$defs/fluffObject"
-								},
-								{
-									"deprecated": true,
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"entries": {
-												"type": "array",
-												"items": {
-													"$ref": "../entry.json"
-												}
-											},
-											"page": {
-												"$ref": "../util.json#/$defs/page"
-											},
-											"source": {
-												"$ref": "../util.json#/$defs/source"
-											},
-											"type": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"entries",
-											"source"
-										],
-										"additionalProperties": false
-									}
-								}
+								"name",
+								"source",
+								"classFeatures"
 							]
-						},
-						"additionalSpells": {
-							"$ref": "../util.json#/$defs/additionalSpellsArray"
-						},
-						"hasFluff": {
-							"const": true
-						},
-						"hasFluffImages": {
-							"const": true
-						},
-						"classSpells": {
-							"description": "Homebrew use only",
-							"type": "array",
-							"minItems": 1,
-							"uniqueItems": true,
-							"items": {
-								"$ref": "../util.json#/$defs/spellListSpellRef"
-							}
-						},
-						"requirementsSpecial": {
-							"description": "For homebrew use.",
-							"type": "string"
-						},
-						"foundrySystem": {
-							"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-						},
-						"foundryFlags": {
-							"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-						},
-						"foundryAdvancement": {
-							"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
-						},
-						"foundryImg": {
-							"$ref": "../util-foundry.json#/$defs/foundryImg"
 						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"name",
-						"source",
-						"classFeatures"
 					]
 				},
 				{
 					"type": "object",
-					"description": "A character class",
-					"properties": {
-						"name": {
-							"type": "string"
+					"$$merge": [
+						{
+							"$ref": "#/$defs/classData"
 						},
-						"alias": {
-							"$ref": "../util.json#/$defs/alias"
-						},
-						"source": {
-							"$ref": "../util.json#/$defs/source"
-						},
-						"otherSources": {
-							"$ref": "../util.json#/$defs/otherSources"
-						},
-						"srd": {
-							"$ref": "../util.json#/$defs/srd"
-						},
-						"basicRules": {
-							"$ref": "../util.json#/$defs/basicRules"
-						},
-						"isReprinted": {
-							"type": "boolean"
-						},
-						"classGroup": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"examples": [
-									"expert",
-									"mage",
-									"priest",
-									"warrior"
-								]
-							}
-						},
-						"isSidekick": {
-							"type": "boolean"
-						},
-						"hd": {
-							"type": "object",
-							"properties": {
-								"number": {
-									"type": "integer"
-								},
-								"faces": {
-									"type": "integer"
-								}
-							},
-							"required": [
-								"number",
-								"faces"
-							],
-							"additionalProperties": false
-						},
-						"proficiency": {
-							"type": "array",
-							"items": {
-								"type": "string",
-								"enum": [
-									"str",
-									"dex",
-									"con",
-									"int",
-									"wis",
-									"cha"
-								]
-							}
-						},
-						"classTableGroups": {
-							"type": "array",
-							"items": {
-								"$ref": "#/$defs/classTableGroup"
-							}
-						},
-						"startingProficiencies": {
-							"$ref": "#/$defs/proficiencies"
-						},
-						"startingEquipment": {
-							"type": "object",
-							"properties": {
-								"additionalFromBackground": {
-									"type": "boolean"
-								},
-								"default": {
-									"type": "array",
-									"items": {
-										"type": "string"
-									}
-								},
-								"defaultData": {
-									"$ref": "../util.json#/$defs/startingEquipment"
-								},
-								"goldAlternative": {
-									"type": "string"
-								}
-							},
-							"required": [
-								"additionalFromBackground",
-								"default"
-							],
-							"additionalProperties": false
-						},
-						"requirements": {
-							"$ref": "#/$defs/requirements"
-						},
-						"multiclassing": {
-							"type": "object",
-							"properties": {
-								"requirements": {
-									"$ref": "#/$defs/requirements"
-								},
-								"proficienciesGained": {
-									"$ref": "#/$defs/proficiencies"
-								},
-								"entries": {
-									"type": "array",
-									"items": {
-										"$ref": "../entry.json"
-									}
-								},
-								"requirementsSpecial": {
-									"description": "For homebrew use.",
-									"type": "string"
-								}
-							},
-							"additionalProperties": false
-						},
-						"casterProgression": {
-							"$ref": "#/$defs/casterProgression"
-						},
-						"spellcastingAbility": {
-							"$ref": "#/$defs/spellcastingAbility"
-						},
-						"cantripProgression": {
-							"$ref": "#/$defs/cantripProgression"
-						},
-						"preparedSpells": {
-							"$ref": "#/$defs/preparedSpells"
-						},
-						"preparedSpellsProgression": {
-							"$ref": "#/$defs/preparedSpellsProgression"
-						},
-						"spellsKnownProgression": {
-							"$ref": "#/$defs/spellsKnownProgression"
-						},
-						"spellsKnownProgressionFixed": {
-							"$ref": "#/$defs/spellsKnownProgressionFixed"
-						},
-						"spellsKnownProgressionFixedAllowLowerLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"
-						},
-						"spellsKnownProgressionFixedByLevel": {
-							"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"
-						},
-						"optionalfeatureProgression": {
-							"$ref": "../util.json#/$defs/optionalfeatureProgression"
-						},
-						"classFeatures": {
-							"type": "array",
-							"description": "Format: \" name | className | classSource | level | source \" , PHB is assumed as classSource and featureSource is assumed to be the same as classSource.",
-							"items": {
-								"oneOf": [
-									{
-										"type": "string"
-									},
-									{
-										"type": "object",
-										"properties": {
-											"classFeature": {
-												"type": "string"
-											},
-											"gainSubclassFeature": {
-												"type": "boolean"
-											}
-										},
-										"required": [
-											"classFeature"
-										]
-									}
-								]
-							}
-						},
-						"subclassTitle": {
-							"type": "string"
-						},
-						"page": {
-							"$ref": "../util.json#/$defs/page"
-						},
-						"fluff": {
-							"oneOf": [
-								{
-									"$ref": "../util.json#/$defs/fluffObject"
-								},
-								{
-									"deprecated": true,
-									"type": "array",
-									"items": {
-										"type": "object",
-										"properties": {
-											"name": {
-												"type": "string"
-											},
-											"entries": {
-												"type": "array",
-												"items": {
-													"$ref": "../entry.json"
-												}
-											},
-											"page": {
-												"$ref": "../util.json#/$defs/page"
-											},
-											"source": {
-												"$ref": "../util.json#/$defs/source"
-											},
-											"type": {
-												"type": "string"
-											}
-										},
-										"required": [
-											"entries",
-											"source"
-										],
-										"additionalProperties": false
-									}
-								}
-							]
-						},
-						"additionalSpells": {
-							"$ref": "../util.json#/$defs/additionalSpellsArray"
-						},
-						"hasFluff": {
-							"const": true
-						},
-						"hasFluffImages": {
-							"const": true
-						},
-						"classSpells": {
-							"description": "Homebrew use only",
-							"type": "array",
-							"minItems": 1,
-							"uniqueItems": true,
-							"items": {
-								"$ref": "../util.json#/$defs/spellListSpellRef"
-							}
-						},
-						"requirementsSpecial": {
-							"description": "For homebrew use.",
-							"type": "string"
-						},
-						"foundrySystem": {
-							"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-						},
-						"foundryFlags": {
-							"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-						},
-						"foundryAdvancement": {
-							"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
-						},
-						"foundryImg": {
-							"$ref": "../util-foundry.json#/$defs/foundryImg"
-						},
-						"_copy": {
-							"$ref": "../util.json#/$defs/copyBlock_copy_generic"
+						{
+							"$ref": "../util.json#/$defs/copyBlockGeneric"
 						}
-					},
-					"additionalProperties": false,
-					"required": [
-						"_copy"
 					]
 				}
 			]
 		},
+
 		"classData": {
-			"description": "A character class",
+			"description" : "A character class",
+
 			"type": "object",
 			"properties": {
 				"name": {
 					"type": "string"
 				},
-				"alias": {
-					"$ref": "../util.json#/$defs/alias"
-				},
-				"source": {
-					"$ref": "../util.json#/$defs/source"
-				},
+				"alias": {"$ref": "../util.json#/$defs/alias"},
+				"source": {"$ref": "../util.json#/$defs/source"},
 				"otherSources": {
 					"$ref": "../util.json#/$defs/otherSources"
 				},
@@ -1624,12 +679,12 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"examples": [
-							"expert",
-							"mage",
-							"priest",
-							"warrior"
-						]
+						"$$switch_key": {
+							"key_site": "enum",
+							"key_ua": "enum",
+							"key_brew": "examples",
+							"value": ["expert", "mage", "priest", "warrior"]
+						}
 					}
 				},
 				"isSidekick": {
@@ -1655,21 +710,12 @@
 					"type": "array",
 					"items": {
 						"type": "string",
-						"enum": [
-							"str",
-							"dex",
-							"con",
-							"int",
-							"wis",
-							"cha"
-						]
+						"enum": ["str", "dex", "con", "int", "wis", "cha"]
 					}
 				},
 				"classTableGroups": {
 					"type": "array",
-					"items": {
-						"$ref": "#/$defs/classTableGroup"
-					}
+					"items": { "$ref": "#/$defs/classTableGroup"}
 				},
 				"startingProficiencies": {
 					"$ref": "#/$defs/proficiencies"
@@ -1699,61 +745,37 @@
 					],
 					"additionalProperties": false
 				},
-				"requirements": {
-					"$ref": "#/$defs/requirements"
-				},
+				"requirements": {"$ref": "#/$defs/requirements"},
 				"multiclassing": {
 					"type": "object",
 					"properties": {
-						"requirements": {
-							"$ref": "#/$defs/requirements"
+						"requirements": {"$ref": "#/$defs/requirements"},
+						"$$ifBrew": {
+							"requirementsSpecial": {
+								"description": "For homebrew use.",
+								"type": "string"
+							}
 						},
 						"proficienciesGained": {
 							"$ref": "#/$defs/proficiencies"
 						},
 						"entries": {
 							"type": "array",
-							"items": {
-								"$ref": "../entry.json"
-							}
-						},
-						"requirementsSpecial": {
-							"description": "For homebrew use.",
-							"type": "string"
+							"items": {"$ref": "../entry.json"}
 						}
 					},
 					"additionalProperties": false
 				},
-				"casterProgression": {
-					"$ref": "#/$defs/casterProgression"
-				},
-				"spellcastingAbility": {
-					"$ref": "#/$defs/spellcastingAbility"
-				},
-				"cantripProgression": {
-					"$ref": "#/$defs/cantripProgression"
-				},
-				"preparedSpells": {
-					"$ref": "#/$defs/preparedSpells"
-				},
-				"preparedSpellsProgression": {
-					"$ref": "#/$defs/preparedSpellsProgression"
-				},
-				"spellsKnownProgression": {
-					"$ref": "#/$defs/spellsKnownProgression"
-				},
-				"spellsKnownProgressionFixed": {
-					"$ref": "#/$defs/spellsKnownProgressionFixed"
-				},
-				"spellsKnownProgressionFixedAllowLowerLevel": {
-					"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"
-				},
-				"spellsKnownProgressionFixedByLevel": {
-					"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"
-				},
-				"optionalfeatureProgression": {
-					"$ref": "../util.json#/$defs/optionalfeatureProgression"
-				},
+				"casterProgression": {"$ref": "#/$defs/casterProgression"},
+				"spellcastingAbility": {"$ref": "#/$defs/spellcastingAbility"},
+				"cantripProgression": {"$ref": "#/$defs/cantripProgression"},
+				"preparedSpells": {"$ref": "#/$defs/preparedSpells"},
+				"preparedSpellsProgression": {"$ref": "#/$defs/preparedSpellsProgression"},
+				"spellsKnownProgression": {"$ref": "#/$defs/spellsKnownProgression"},
+				"spellsKnownProgressionFixed": {"$ref": "#/$defs/spellsKnownProgressionFixed"},
+				"spellsKnownProgressionFixedAllowLowerLevel": {"$ref": "#/$defs/spellsKnownProgressionFixedAllowLowerLevel"},
+				"spellsKnownProgressionFixedByLevel": {"$ref": "#/$defs/spellsKnownProgressionFixedByLevel"},
+				"optionalfeatureProgression": {"$ref": "../util.json#/$defs/optionalfeatureProgression"},
 				"classFeatures": {
 					"type": "array",
 					"description": "Format: \" name | className | classSource | level | source \" , PHB is assumed as classSource and featureSource is assumed to be the same as classSource.",
@@ -1772,9 +794,7 @@
 										"type": "boolean"
 									}
 								},
-								"required": [
-									"classFeature"
-								]
+								"required": ["classFeature"]
 							}
 						]
 					}
@@ -1782,14 +802,10 @@
 				"subclassTitle": {
 					"type": "string"
 				},
-				"page": {
-					"$ref": "../util.json#/$defs/page"
-				},
+				"page": {"$ref": "../util.json#/$defs/page"},
 				"fluff": {
 					"oneOf": [
-						{
-							"$ref": "../util.json#/$defs/fluffObject"
-						},
+						{"$ref": "../util.json#/$defs/fluffObject"},
 						{
 							"deprecated": true,
 							"type": "array",
@@ -1801,100 +817,87 @@
 									},
 									"entries": {
 										"type": "array",
-										"items": {
-											"$ref": "../entry.json"
-										}
+										"items": {"$ref": "../entry.json"}
 									},
-									"page": {
-										"$ref": "../util.json#/$defs/page"
-									},
-									"source": {
-										"$ref": "../util.json#/$defs/source"
-									},
+									"page": {"$ref": "../util.json#/$defs/page"},
+									"source": {"$ref": "../util.json#/$defs/source"},
 									"type": {
 										"type": "string"
 									}
 								},
-								"required": [
-									"entries",
-									"source"
-								],
+								"required": ["entries", "source"],
 								"additionalProperties": false
 							}
 						}
 					]
 				},
-				"additionalSpells": {
-					"$ref": "../util.json#/$defs/additionalSpellsArray"
-				},
-				"hasFluff": {
-					"const": true
-				},
-				"hasFluffImages": {
-					"const": true
-				},
-				"classSpells": {
-					"description": "Homebrew use only",
-					"type": "array",
-					"minItems": 1,
-					"uniqueItems": true,
-					"items": {
-						"$ref": "../util.json#/$defs/spellListSpellRef"
+				"additionalSpells": { "$ref": "../util.json#/$defs/additionalSpellsArray" },
+				"hasFluff": {"const": true},
+				"hasFluffImages": {"const": true},
+				"$$if": {
+					"modes": ["brew", "ua"],
+					"value": {
+						"classSpells": {
+							"description": "Homebrew use only",
+							"type": "array",
+							"minItems": 1,
+							"uniqueItems": true,
+							"items": {"$ref": "../util.json#/$defs/spellListSpellRef"}
+						}
 					}
 				},
-				"requirementsSpecial": {
-					"description": "For homebrew use.",
-					"type": "string"
-				},
-				"foundrySystem": {
-					"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
-				},
-				"foundryFlags": {
-					"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
-				},
-				"foundryAdvancement": {
-					"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
-				},
-				"foundryImg": {
-					"$ref": "../util-foundry.json#/$defs/foundryImg"
+				"$$ifBrew": {
+					"requirementsSpecial": {
+						"description": "For homebrew use.",
+						"type": "string"
+					},
+					"foundrySystem": {
+						"$ref": "../util-foundry.json#/$defs/foundrySystemObject"
+					},
+					"foundryFlags": {
+						"$ref": "../util-foundry.json#/$defs/foundryFlagsObject"
+					},
+					"foundryAdvancement": {
+						"$ref": "../util-foundry.json#/$defs/foundryAdvancementsArray"
+					},
+					"foundryImg": {
+						"$ref": "../util-foundry.json#/$defs/foundryImg"
+					}
 				}
 			},
 			"additionalProperties": false
 		}
 	},
+
 	"properties": {
 		"_meta": {
 			"$ref": "../util.json#/$defs/metaBlock"
 		},
+
 		"class": {
 			"type": "array",
-			"items": {
-				"$ref": "#/$defs/class"
-			},
+			"items": {"$ref": "#/$defs/class"},
 			"minItems": 1,
 			"uniqueItems": true
 		},
+
 		"subclass": {
 			"type": "array",
-			"items": {
-				"$ref": "#/$defs/subclass"
-			},
+			"items": {"$ref": "#/$defs/subclass"},
 			"minItems": 1,
 			"uniqueItems": true
 		},
+
 		"classFeature": {
 			"type": "array",
-			"items": {
-				"$ref": "#/$defs/classFeature"
-			},
+			"items": {"$ref": "#/$defs/classFeature"},
 			"minItems": 1,
 			"uniqueItems": true
 		},
+
 		"subclassFeature": {
 			"type": "array",
-			"items": {
-				"$ref": "#/$defs/subclassFeature"
-			},
+			"items": {"$ref": "#/$defs/subclassFeature"},
 			"minItems": 1,
 			"uniqueItems": true
 		}
